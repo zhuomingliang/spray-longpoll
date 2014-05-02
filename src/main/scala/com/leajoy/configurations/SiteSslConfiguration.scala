@@ -35,7 +35,10 @@ trait SiteSslConfiguration {
   val _configuration = SslConfiguration(_system)
   
   // Ensure that the constructed ActorSystem is shut down when the JVM shuts down
-  sys.addShutdownHook(_system.shutdown())
+  sys.addShutdownHook({
+        _log.info("Shutdown");
+	  _system.shutdown()
+  })
   
   // if there is no SSLContext in scope implicitly the HttpServer uses the default SSLContext,
   // since we want non-default settings in this example we make a custom SSLContext available here

@@ -1,4 +1,4 @@
-package com.leajoy.actors
+package com.leajoy.actors.comet
 
 import akka.actor._
 import scala.concurrent.ExecutionContext.Implicits.global

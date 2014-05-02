@@ -5,7 +5,7 @@ import akka.event.Logging
 import akka.io.IO
 import spray.can.Http
 import com.leajoy.configurations.{SiteConfiguration, SiteSslConfiguration}
-import com.leajoy.actors.CometServiceActor
+import com.leajoy.actors.comet.CometServiceActor
 
 object Main extends App with SiteSslConfiguration {
   implicit val system = ActorSystem("site")
@@ -19,5 +19,8 @@ object Main extends App with SiteSslConfiguration {
   IO(Http) ! Http.Bind(service, configuration.interface, configuration.port)
   
   // Ensure that the constructed ActorSystem is shut down when the JVM shuts down
-  sys.addShutdownHook(system.shutdown())
+  sys.addShutdownHook({
+      log.info("Shutdown")
+	  system.shutdown()
+   })
 }

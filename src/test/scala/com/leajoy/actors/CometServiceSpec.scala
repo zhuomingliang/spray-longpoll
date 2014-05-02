@@ -4,6 +4,7 @@ import org.specs2.mutable.Specification
 import spray.testkit.Specs2RouteTest
 import spray.http._
 import StatusCodes._
+import com.leajoy.actors.comet.CometService
 
 
 class CometServiceSpec extends Specification with Specs2RouteTest with CometService {
