@@ -1,4 +1,4 @@
-package com.example
+package com.leajoy.actors
 
 import org.specs2.mutable.Specification
 import spray.testkit.Specs2RouteTest
@@ -6,14 +6,14 @@ import spray.http._
 import StatusCodes._
 
 
-class MyServiceSpec extends Specification with Specs2RouteTest with MyService {
+class CometServiceSpec extends Specification with Specs2RouteTest with CometService {
   def actorRefFactory = system
   
-  "MyService" should {
+  "CometService" should {
 
     "return a greeting for GET requests to the root path" in {
       Get() ~> myRoute ~> check {
-        entityAs[String] must contain("Say hello")
+        responseAs[String] must contain("Welcome")
       }
     }
 
@@ -26,7 +26,7 @@ class MyServiceSpec extends Specification with Specs2RouteTest with MyService {
     "return a MethodNotAllowed error for PUT requests to the root path" in {
       Put() ~> sealRoute(myRoute) ~> check {
         status === MethodNotAllowed
-        entityAs[String] === "HTTP method not allowed, supported methods: GET"
+        responseAs[String] === "HTTP method not allowed, supported methods: GET"
       }
     }
   }
