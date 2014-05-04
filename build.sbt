@@ -19,6 +19,8 @@ libraryDependencies ++= Seq(
   "com.typesafe.akka"   %%  "akka-actor"    % "2.3.2",
  // "org.slf4j"           %   "slf4j-simple"  % "1.7.7",
   "log4j"               %   "log4j"         % "1.2.17",
+  "com.101tec"          %   "zkclient"      % "0.4",
+  "com.yammer.metrics"  %   "metrics-core"  % "2.2.0",
   "org.specs2"          %%  "specs2"        % "1.13" % "test"
 )
 
